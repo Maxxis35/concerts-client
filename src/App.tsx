@@ -1,26 +1,20 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {useContext} from 'react';
 import './App.css';
+import LoginForm from "./modules/usersAuth/components/LoginForm";
+import {Context} from "./index";
+import {observer} from "mobx-react-lite";
 
 function App() {
+     const {usersStore} = useContext(Context);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Work</h1>
+        <h1>{usersStore.isAuth ? `User is authorized ` : 'SingIn' }</h1>
+        <LoginForm/>
+
     </div>
   );
 }
 
-export default App;
+export default observer(App);
